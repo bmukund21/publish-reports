@@ -56,11 +56,9 @@ pipeline {
 
             junit allowEmptyResults: true, testResults: '**/pylint_junit.xml'
 
-            // Updated publishCoverage for the newer plugin
             publishCoverage adapters: [cobertura('**/coverage.xml')],
-                sourceFileResolver: sourceFiles('NEVER_STORE') // changed to NEVER_STORE as per latest plugin documentation
+                sourceFileResolver: sourceFiles('NEVER_STORE')
 
-            // Optional step to visualize code coverage trends (if needed)
             recordCoverage tools: [[cobertura: '**/coverage.xml']]
         }
     }

@@ -16,14 +16,17 @@ pipeline {
                 }
             }
         }
-        stage('Lint') {
-            steps {
-                dir("${env.WORKSPACE}") {
-                    sh 'venv/bin/flake8 --ignore=E501,E231 *.py'
-                    sh 'venv/bin/pylint --errors-only --disable=C0301 --disable=C0326 *.py'
-                }
-            }
+       stage('Lint') {
+    steps {
+        dir("${env.WORKSPACE}/jenkins-publish-reports") {
+            sh './venv/bin/flake8 --version'
+            sh './venv/bin/pylint --version'
+            sh 'venv/bin/flake8 --ignore=E501,E231 *.py'
+            sh 'venv/bin/pylint --errors-only --disable=C0301 --disable=C0326 *.py'
         }
+    }
+}
+
         stage('Test') {
             steps {
                 dir("${env.WORKSPACE}") {

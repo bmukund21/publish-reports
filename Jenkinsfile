@@ -21,7 +21,7 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')  // Set timeout to 10 minutes
     }
     steps {
-        dir("${env.WORKSPACE}/jenkins-publish-reports") {
+        dir("${env.WORKSPACE}/") {
             sh './venv/bin/flake8 --version'
             sh './venv/bin/pylint --version'
             sh 'venv/bin/flake8 --ignore=E501,E231 *.py'

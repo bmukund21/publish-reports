@@ -16,7 +16,10 @@ pipeline {
                 }
             }
         }
-       stage('Lint') {
+   stage('Lint') {
+    options {
+        timeout(time: 10, unit: 'MINUTES')  // Set timeout to 10 minutes
+    }
     steps {
         dir("${env.WORKSPACE}/jenkins-publish-reports") {
             sh './venv/bin/flake8 --version'
@@ -26,6 +29,7 @@ pipeline {
         }
     }
 }
+
 
         stage('Test') {
             steps {

@@ -48,11 +48,7 @@ pipeline {
 
     post {
         always {
-<<<<<<< HEAD
-            dir("${env.WORKSPACE}/Ch05/05_02-publish-reports"){
-=======
             dir("${env.WORKSPACE}/jenkins-publish-reports") {
->>>>>>> e3d7c27 (updated the jenkinsfile)
                 sh 'venv/bin/coverage xml'
             }
 
